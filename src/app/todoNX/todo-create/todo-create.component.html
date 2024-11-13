@@ -1,0 +1,13 @@
+<mat-card class="mb-4 p-3">
+    <mat-form-field appearance="outline" class="w-100">
+        <input [formControl]="titleFormControl" type="text">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="w-100">
+        <textarea [formControl]="descriptionFormControl"> </textarea>
+
+    </mat-form-field>
+
+    <button (click)="onAdd()" class="mt-2 btn btn-primary">
+        Добавить
+    </button>
+</mat-card>

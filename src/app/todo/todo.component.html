@@ -1,0 +1,42 @@
+<div class="container mt-4">
+    <form [formGroup]="formGroup" (ngSubmit)="onAdd()">
+        <div class="input-group mb-3">
+            <input class="form-control" type="text" formControlName="name">
+            <textarea class="form-control" formControlName="description"></textarea>
+        </div>
+        <button class="btn btn-primary">Add</button>
+    </form>
+
+    <form [formGroup]="formFilter">
+        <div class="input-group mb-3">
+            <input class="form-control" type="text" formControlName="name">
+            <select formControlName="showCompleted">
+                <option [ngValue]="null">All</option>
+                <option [ngValue]="true">Completed</option>
+                <option [ngValue]="false">Not Completed</option>
+            </select>
+
+        </div>
+
+    </form>
+
+
+    <ul class="list-group">
+        @for (item of filterTodo; track item) {
+            <li class="list-group-item d-flex justify-content-between align-content-center">
+                <div>
+                    <span>
+                         {{ item.name }}
+                    </span>
+                    <p>{{ item.description }}</p>
+                </div>
+                <div>
+                    <input (change)="toggleCompleted(item)" type="checkbox">
+                    <button (click)="onDelete(item.id)" class="btn btn-primary">X</button>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+
+
